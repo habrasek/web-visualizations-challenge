@@ -4,9 +4,20 @@ Feel free to disregard and create your own code */
 
 // Define function that will run on page load
 function init() {
+    let dropdown = d3.select("#selDataset");
 
+    let path = "samples.json";
+    data = d3.json(path);
+    console.log(data);
     // Read json data
+    d3.json("samples.json").then((data) =>{
+        let name = data.names;
 
+        name.forEach((person) =>{
+            dropdown.append("option").text(person).property("value", person);
+        })
+
+    })
         // Parse and filter data to get sample names
 
         // Add dropdown option for each sample
@@ -52,4 +63,3 @@ function optionChanged(sample){
 
 // Initialize dashboard on page load
 init();
-
