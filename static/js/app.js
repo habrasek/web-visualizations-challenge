@@ -21,7 +21,7 @@ function init() {
         let sample = name[0];
        // let sample = name[20];
 
-
+        buildMetadata(sample);
         buildCharts(sample);
 
     })
@@ -51,8 +51,8 @@ function buildMetadata(sample) {
 
        let panel = d3.select("#sample-metadata");
 
-       Object.assign(result).forEach(([num,info]) => {
-           panel.append("p").text(`${num}:${info}`);
+       Object.entries(result).forEach(([key,detail]) => {
+           panel.append("p").text(`${key}: ${detail}`);
        })
     })
 
